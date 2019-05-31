@@ -29,9 +29,9 @@ fi
 # Extract all files, overwriting previous
 tar xvfj $DOWNLOAD_TARGET -C $DOWNLOAD_TARGET_DIR --overwrite | \
   zenity --progress \
+    --pulsate \
     --title="Extracting..." \
     --text="$DOWNLOAD_TARGET_FILE" \
-    --pulse \
     --auto-close \
     --auto-kill
 
@@ -39,4 +39,4 @@ tar xvfj $DOWNLOAD_TARGET -C $DOWNLOAD_TARGET_DIR --overwrite | \
 chmod +x $DOWNLOAD_TARGET_DIR/$BIN_PATH
 
 # Run the executable
-$DOWNLOAD_TARGET_DIR/./$BIN_PATH $ARGUMENTS
+$DOWNLOAD_TARGET_DIR/$BIN_PATH $ARGUMENTS
