@@ -14,7 +14,7 @@ sudo apt install -y ${PACKAGES[@]} && \
 gecho "Installing Dockstation" && \
 LATEST_VERSION=`git-read-latest-release DockStation/dockstation | cut -dv -f2` && \
 download-install-deb \
-"https://github.com/DockStation/dockstation/releases/download/v${LATEST_VERSION}/dockstation_${LATEST_VERSION}_amd64.deb"
+"https://github.com/DockStation/dockstation/releases/download/v${LATEST_VERSION}/dockstation_${LATEST_VERSION}_amd64.deb" && \
 
 # Install latest openshift CLI
 gecho "Installing openshift CLI" && \

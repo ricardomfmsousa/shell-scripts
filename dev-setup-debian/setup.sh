@@ -26,13 +26,13 @@ for setup in ${SETUP_FILES[@]}; do
   # Warn and exit immediately if child script errors 
   ./$setup
   [ $? -ne 0 ] && recho "Error in $setup" && exit $?
-done
-cd -
+done && \
+cd - && \
 
-gecho "Copying dotfiles"
-DOTFILES_DIR="./dotfiles"
+gecho "Copying dotfiles" && \
+DOTFILES_DIR="./dotfiles" && \
 cp -r $DOTFILES_DIR/. $HOME && \
-echo "Copied $(ls -Al $DOTFILES_DIR)"
+echo "Copied $(ls -Al $DOTFILES_DIR)" && \
 
 gecho "Removing uneeded dependencies" && \
 sudo apt autoremove && \
