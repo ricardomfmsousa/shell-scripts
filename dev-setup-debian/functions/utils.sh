@@ -28,6 +28,12 @@ git-download-latest-release() {
   wget -q -O - $REPO | tar xz -C $2
 }
 
+# $1: download url 
+download-install-deb() {
+  DEB_NAME="$(mktemp)" && \
+  wget -O "$DEB_NAME" "$1" && sudo dpkg -i "$DEB_NAME" && rm -f "$DEB_NAME"
+}
+
 # $1: directory to add to path
 add-to-path() {
   # Only add if not in $PATH already
