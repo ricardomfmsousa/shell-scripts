@@ -5,6 +5,7 @@ source ./functions/utils.sh && no-root
 # Declare which setup files to run, under the setup directory
 SETUP_DIR="./setup"
 SETUP_FILES=(
+ utilities.sh # General system, image, video, audio and other tools
  browsers.sh # Setup web browsers
  databases.sh # Setup all databases and its GUIs
  docker.sh # Setup docker, docker-compose, rancher and openshift
@@ -12,7 +13,6 @@ SETUP_FILES=(
  javascript.sh # Configure NVM, Node.js and node packages
  network.sh # Setup network and install certificates
  shell-vcs-ide.sh # Setup all related shell, terminal, VCS and editor software
- utilities.sh # General system, image, video, audio and other tools
 )
 
 # Update apt package list and upgrade upgradable packages
@@ -30,11 +30,11 @@ done
 cd -
 
 gecho "Copying dotfiles"
-DOTFILES_DIR="dotfiles"
+DOTFILES_DIR="./dotfiles"
 cp -r $DOTFILES_DIR/. $HOME && \
 echo "Copied $(ls -Al $DOTFILES_DIR)"
 
-gecho "Removing uneeded apt packages" && \
+gecho "Removing uneeded dependencies" && \
 sudo apt autoremove && \
 
 # TODO: create swap file and configure swapiness
