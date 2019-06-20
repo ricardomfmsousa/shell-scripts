@@ -28,7 +28,7 @@ for setup in ${SETUP_FILES[@]}; do
   ./$setup
   [ $? -ne 0 ] && recho "Error in $setup" && exit $?
 done &&
-cd - &&
+cd -
 
 # TODO: create swap file and configure swapiness
 
