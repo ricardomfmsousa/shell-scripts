@@ -4,7 +4,7 @@ source ../functions/utils.sh && no-root
 
 APT=(
   mongodb # Cross-platform document-oriented database program
-  mongodb-clients
+  mongodb-clients # Client apps for mongodb
 )
 apt-install ${APT[@]} &&
 

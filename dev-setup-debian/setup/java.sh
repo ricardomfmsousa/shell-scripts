@@ -3,9 +3,9 @@
 source ../functions/utils.sh && no-root
 
 APT=(
-  maven
-  default-jre
-  default-jdk
+  maven # Build automation tool used primarily for Java projects
+  default-jre # Default Java Runtime
+  default-jdk # Default Java Dev Kit
 )
 apt-install ${APT[@]} &&
 

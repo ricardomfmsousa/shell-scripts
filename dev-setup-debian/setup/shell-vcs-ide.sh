@@ -15,10 +15,10 @@ apt-install ${APT[@]} &&
 
 # Install snap available text editors/IDEs
 SNAP=(
-  code
-  android-studio
-  notepad-plus-plus
-  intellij-idea-community
+  code # TypeScript IDE from Microsoft
+  android-studio # Official IDE for Google's Android operating system
+  notepad-plus-plus # Good old M$ Windows notepad++ packed in a snap
+  intellij-idea-community # Java IDE from JetBrains
 ) &&
 snap-install ${SNAP[@]}
  

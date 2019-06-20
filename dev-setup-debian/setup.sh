@@ -18,7 +18,7 @@ SETUP_FILES=(
 
 # Update apt package list and upgrade upgradable packages
 gecho "Upgrading existing apt packages"
-sudo apt update && sudo apt upgrade -y && \
+sudo apt update && sudo apt upgrade -y &&
 
 # Run the setup scripts
 cd $SETUP_DIR && \
@@ -27,8 +27,8 @@ for setup in ${SETUP_FILES[@]}; do
   # Warn and exit immediately if child script errors 
   ./$setup
   [ $? -ne 0 ] && recho "Error in $setup" && exit $?
-done && \
-cd - && \
+done &&
+cd - &&
 
 # TODO: create swap file and configure swapiness
 
