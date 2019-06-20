@@ -2,7 +2,10 @@
 # Install miscellaneous utilities
 source ../functions/utils.sh && no-root
 
-PACKAGES=(
+# System monitor and optimizer
+apt-install-ppa "oguzhaninan/stacer" "stacer" && 
+
+APT=(
   # Package managers, PPAs
   snap snapd gdebi software-properties-common
   # Runtimes, codecs, fonts and plugins that are restricted in some countries 
@@ -35,23 +38,17 @@ PACKAGES=(
   gnome-tweaks
   # Mouse themes
   breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra
-)
-sudo apt install -y ${PACKAGES[@]} && \
+) && 
+apt-install ${APT[@]} &&
 
-# System monitor and optimizer
-sudo add-apt-repository -y ppa:oguzhaninan/stacer && \
-sudo apt update && \
-sudo apt install -y stacer && \
-
-# Install snap packages
-# API tester
-sudo snap install postman && \
-# Graphics
-sudo snap install krita && \
-sudo snap install pick-colour-picker && \
-# Audio
-sudo snap install audacity && \
-sudo snap install spotify && \
-# Comunications
-sudo snap install discord && \
-sudo snap install skype --classic
+SNAP=(
+  # API tester
+  postman 
+  # Graphics
+  krita pick-colour-picker 
+  # Audio
+  audacity spotify 
+  # Comunications
+  discord skype
+) &&
+snap-install ${SNAP[@]}
