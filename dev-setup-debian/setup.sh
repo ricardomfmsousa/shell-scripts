@@ -13,6 +13,7 @@ SETUP_FILES=(
  javascript.sh # Configure NVM, Node.js and node packages
  network.sh # Setup network and install certificates
  shell-vcs-ide.sh # Setup all related shell, terminal, VCS and editor software
+ post-install.sh # Copy dotfiles and perform some cleanup
 )
 
 # Update apt package list and upgrade upgradable packages
@@ -29,17 +30,9 @@ for setup in ${SETUP_FILES[@]}; do
 done && \
 cd - && \
 
-gecho "Copying dotfiles" && \
-DOTFILES_DIR="./dotfiles" && \
-cp -r $DOTFILES_DIR/. $HOME && \
-echo "Copied $(ls -Al $DOTFILES_DIR)" && \
-
-gecho "Removing uneeded dependencies" && \
-sudo apt autoremove && \
-
 # TODO: create swap file and configure swapiness
+
+gecho "Setup success!"
 
 # Reboot
 # becho "Press enter to REBOOT, Ctrl+C to cancel."; read -p ""
-
-gecho "Setup success!"
