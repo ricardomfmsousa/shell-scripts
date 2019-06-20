@@ -66,3 +66,31 @@ Exec=$2
 " > "$AUTO_START_PATH" && \
   echo "[$1] added to $AUTO_START_PATH"
 }
+
+# $@: Packages to install
+apt-install() {
+  packages=("$@")      
+  sudo apt install -y "${packages[@]}"
+}
+
+# $1: PPA name
+# $2: package name
+apt-install-ppa() {
+  # Install software-properties-common to get add-apt-repository
+  sudo apt install -y software-properties-common &&
+  sudo add-apt-repository -y -u ppa:$1 && 
+  sudo apt install -y $2
+}
+
+# $@: Snap packages to install
+snap-install() {
+  sudo apt install -y snap snapd &&
+  # Install one by one to prevent fails when in bulk and a snap exists
+  packages=("$@") &&
+  for snap in "${packages[@]}"; do
+    # Dynamicaly read and set confinement
+    confinement=`snap info --verbose $snap |
+      awk  '/confinement:/ && !/strict/ {print a="--"$2; a;}'` &&
+    sudo snap install $snap $confinement
+  done
+}
