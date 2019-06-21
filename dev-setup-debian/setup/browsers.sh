@@ -10,7 +10,7 @@ apt-install ${APT[@]} &&
 
 SNAP=(
   opera # Opera Software web browser
-)
+) &&
 snap-install ${SNAP[@]} &&
 
 # Install latest Google Chrome
