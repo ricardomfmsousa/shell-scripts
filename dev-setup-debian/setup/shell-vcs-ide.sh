@@ -13,15 +13,13 @@ APT=(
 ) &&
 apt-install ${APT[@]} &&
 
-# Install snap available text editors/IDEs
 SNAP=(
   code # TypeScript IDE from Microsoft
   android-studio # Official IDE for Google's Android operating system
   notepad-plus-plus # Good old M$ Windows notepad++ packed in a snap
   intellij-idea-community # Java IDE from JetBrains
 ) &&
-snap-install ${SNAP[@]}
- 
+snap-install ${SNAP[@]} && 
 
 # Install oh-my-zsh: framework for managing zsh configuration
 rm -rf "$HOME/.oh-my-zsh" &&
