@@ -13,6 +13,7 @@ SETUP_FILES=(
  javascript.sh # Configure NVM, Node.js and node packages
  network.sh # Setup network and install certificates
  shell-vcs-ide.sh # Setup all related shell, terminal, VCS and editor software
+ os.sh # Setup OS/WM specific packages and configs
  post-install.sh # Copy dotfiles and perform some cleanup
 )
 
