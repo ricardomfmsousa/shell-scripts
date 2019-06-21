@@ -14,8 +14,8 @@ APT=(
   libavcodec-extra ffmpeg libdvd-pkg
   # Build essentials 
   build-essential libssl-dev libstdc++6
-  # System monitor and power management
-  htop stacer tlp tlp-rdw
+  # System info, monitor and power management
+  neofetch htop tlp tlp-rdw
   # Partition tools
   gparted usb-creator-gtk
   # FTP client
@@ -34,8 +34,6 @@ APT=(
   # Archive Extractors
   unace unrar zip unzip p7zip-full p7zip-rar sharutils
   rar uudeview mpack arj cabextract file-roller
-  # Desktop configuration tweaks
-  gnome-tweaks
   # Mouse themes
   breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra
 ) && 
