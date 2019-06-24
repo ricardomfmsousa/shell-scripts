@@ -28,7 +28,6 @@ if [ ! -f "$DOWNLOAD_TARGET" ]; then
       --auto-kill
 fi
 
-
 # Extract all files, overwriting previous
 rm -r "$DOWNLOAD_TARGET_DIR/$BIN_DIR"
 tar xvfj "$DOWNLOAD_TARGET" -C "$DOWNLOAD_TARGET_DIR" | \
