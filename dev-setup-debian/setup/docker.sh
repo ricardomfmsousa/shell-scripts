@@ -7,7 +7,7 @@ gecho "Installing docker tools"
 PACKAGES=(
   docker # Container platform
   docker-compose # Define and run multi-container Docker applications
-)
+) &&
 apt-install ${PACKAGES[@]} &&
 
 # Install latest Dockstation: Manage projects based on Docker

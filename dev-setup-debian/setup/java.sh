@@ -6,7 +6,7 @@ APT=(
   maven # Build automation tool used primarily for Java projects
   default-jre # Default Java Runtime
   default-jdk # Default Java Dev Kit
-)
+) &&
 apt-install ${APT[@]} &&
 
 # Install jenv to easily switch between installed java versions
