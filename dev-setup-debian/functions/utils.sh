@@ -1,3 +1,5 @@
+# Utility functions to be used in `setup.sh`
+
 recho() { echo -e "\e[1m\e[31m$1\e[0m"; }
 gecho() { echo -e "\e[1m\e[32m$1\e[0m"; }
 becho() { echo -e "\e[1m\e[34m$1\e[0m"; }
