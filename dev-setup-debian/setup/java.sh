@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup Java and Java version switcher
+
 source ../functions/utils.sh && no-root
 
 APT=(

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup all related shell, terminal, VCS and editor software
+
 source ../functions/utils.sh && no-root
 
 APT=(

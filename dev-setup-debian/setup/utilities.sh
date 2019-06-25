@@ -1,5 +1,6 @@
 #!/bin/bash
 # Install miscellaneous utilities
+
 source ../functions/utils.sh && no-root
 
 # System monitor and optimizer

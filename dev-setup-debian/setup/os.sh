@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup OS/WM specific packages and configs
+
 source ../functions/utils.sh && no-root
 
 WINDOW_MANAGER=`echo $XDG_CURRENT_DESKTOP | awk '{print tolower($0)}'`

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Runs all scripts under the setup directory, those can also be run individually
+
 source ./functions/utils.sh && no-root
 
 # Declare which setup files to run, under the setup directory

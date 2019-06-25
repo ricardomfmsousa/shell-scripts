@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copy dotfiles and perform some cleanup
+
 source ../functions/utils.sh && no-root
 
 # Copy all configuration files under the dotfiles folder

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup network and install certificates
+
 source ../functions/utils.sh && no-root
 
 # Install ca-certificates, VPN IKEv2

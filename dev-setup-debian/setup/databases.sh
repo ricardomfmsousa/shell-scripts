@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup all databases and its GUIs
+
 source ../functions/utils.sh && no-root
 
 APT=(

@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup Node.js through NVM and install npm packages
+
 source ../functions/utils.sh && no-root
 
 # Needed for some npm packages that require compiling code from source

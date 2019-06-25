@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup web browsers
+
 source ../functions/utils.sh && no-root
 
 APT=(

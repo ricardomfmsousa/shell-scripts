@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup docker, docker-compose, rancher and openshift
+
 source ../functions/utils.sh && no-root
 
 # Install main docker tools

@@ -1,10 +1,11 @@
 #!/bin/bash
-#
-# - Downloads a compressed file;
-# - Extracts all its contents;
-# - Make the binary executable;
-# - Executes the binary with the secified arguments.
-#
+# Utility to get a fresh copy of Firefox v52:
+#   - Downloads a compressed file (if it does not exist);
+#   - Extracts all its contents;
+#   - Make the binary executable;
+#   - Executes the binary with the secified arguments.
+
+
 DOWNLOAD_LINK="https://ftp.mozilla.org/pub/firefox/releases/52.0esr/linux-x86_64/fr/firefox-52.0esr.tar.bz2"
 DOWNLOAD_TARGET_FILE="firefox-52.0esr.tar.bz2"
 DOWNLOAD_TARGET_DIR="/tmp"
