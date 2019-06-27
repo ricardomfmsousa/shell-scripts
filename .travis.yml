@@ -1,0 +1,13 @@
+before_install:
+  - git config --global user.name "Travis CI"
+  - git config --global user.email "travis@travis-ci.org"
+  - git remote set-url origin https://${GH_TOKEN}@github.com/ricardomfmsousa/shell-scripts.git > /dev/null 2>&1
+  - git checkout master
+
+script:
+  - ${TRAVIS_BUILD_DIR}/generate-readme.sh ${TRAVIS_BUILD_NUMBER}
+
+after_success:
+  - git add *.md
+  - git commit --message "[skip travis] Update README.md"
+  - git push origin master > /dev/null 2>&1
