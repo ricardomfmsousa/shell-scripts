@@ -23,6 +23,7 @@ cd ../ca-certificates &&
 for cert in $(ls); do
   echo "Adding $cert" &&
   sudo cp "$cert" "/usr/local/share/ca-certificates/$cert" &&
+  sudo dpkg-reconfigure -f noninteractive ca-certificates &&
   sudo update-ca-certificates
 done &&
 cd - &&
