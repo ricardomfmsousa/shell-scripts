@@ -26,6 +26,7 @@ sudo apt update && sudo apt upgrade -y &&
 cd $SETUP_DIR && \
 for setup in ${SETUP_FILES[@]}; do 
   becho "Running $setup"
+  apt-wait
   # Warn and exit immediately if child script errors 
   ./$setup
   [ $? -ne 0 ] && recho "Error in $setup" && exit $?

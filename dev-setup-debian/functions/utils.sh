@@ -63,6 +63,21 @@ Exec=$2
   echo "[$1] added to $AUTO_START_PATH"
 }
 
+# Wait for apt to finish it's operations
+apt-wait() {
+  while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1 ; do
+    sleep 1
+  done
+  while sudo fuser /var/lib/apt/lists/lock >/dev/null 2>&1 ; do
+    sleep 1
+  done
+  if [ -f /var/log/unattended-upgrades/unattended-upgrades.log ]; then
+    while sudo fuser /var/log/unattended-upgrades/unattended-upgrades.log >/dev/null 2>&1 ; do
+      sleep 1
+    done
+  fi
+}
+
 # $@: Packages to install
 apt-install() {
   packages=("$@")
