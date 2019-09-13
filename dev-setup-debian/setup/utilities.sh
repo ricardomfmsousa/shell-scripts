@@ -4,7 +4,9 @@
 source ../functions/utils.sh && no-root
 
 # System monitor and optimizer
-apt-install-ppa "oguzhaninan/stacer" "stacer" && 
+apt-install-ppa "oguzhaninan/stacer" "stacer" &&
+#  Papirus icon theme
+apt-install-ppa "papirus/papirus" "papirus-icon-theme" &&
 
 APT=(
   # Package managers, PPAs
