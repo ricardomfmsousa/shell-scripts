@@ -3,9 +3,6 @@
 
 source ../functions/utils.sh && no-root
 
-# Needed for some npm packages that require compiling code from source
-apt-install build-essential &&
-
 # Setup nvm
 rm -rf "$NVM_DIR" ~/.nvm && export NVM_DIR="" &&
 LATEST_RELEASE=`git-read-latest-release "nvm-sh/nvm"` &&

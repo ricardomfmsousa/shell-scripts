@@ -4,7 +4,6 @@
 source ../functions/utils.sh && no-root
 
 APT=(
-  chromium-browser # Google's open-source web browser
   firefox # Mozilla Foundation open-source web browser
 ) &&
 apt-install ${APT[@]} &&

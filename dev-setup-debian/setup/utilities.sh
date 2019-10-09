@@ -3,42 +3,33 @@
 
 source ../functions/utils.sh && no-root
 
-# System monitor and optimizer
-apt-install-ppa "oguzhaninan/stacer" "stacer" &&
-#  Papirus icon theme
-apt-install-ppa "papirus/papirus" "papirus-icon-theme" &&
-
 APT=(
   # Package managers, PPAs
   snap snapd gdebi software-properties-common
-  # Runtimes, codecs, fonts and plugins that are restricted in some countries 
-  ubuntu-restricted-extras ubuntu-restricted-addons
   # Codecs
-  libavcodec-extra ffmpeg libdvd-pkg
+  libavcodec-extra ffmpeg
   # Build essentials 
   build-essential libssl-dev libstdc++6
   # System info, monitor and power management
   neofetch htop tlp tlp-rdw
   # Partition tools
-  gparted usb-creator-gtk
+  gparted
   # FTP client
   filezilla
   # Office
   libreoffice
   # Graphics
-  flameshot gimp gimp-data gimp-plugin-registry 
+  gimp gimp-data gimp-plugin-registry 
   gimp-data-extras inkscape imagemagick
   # Video
-  kazam cheese vlc browser-plugin-vlc
+  kazam cheese vlc
   # Fonts
-  fonts-powerline fonts-liberation
+  ttf-mscorefonts-installer fonts-powerline fonts-liberation
   # Download manager / Torrent client
   curl wget transmission
   # Archive Extractors
   unace unrar zip unzip p7zip-full p7zip-rar sharutils
   rar uudeview mpack arj cabextract file-roller
-  # Mouse themes
-  breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra
 ) && 
 apt-install ${APT[@]} &&
 
@@ -46,7 +37,7 @@ SNAP=(
   # API tester
   postman 
   # Graphics
-  krita pick-colour-picker 
+  flameshot-app krita pick-colour-picker 
   # Audio
   audacity spotify 
   # Comunications

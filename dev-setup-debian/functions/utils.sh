@@ -34,7 +34,8 @@ git-download-latest-release() {
 add-to-path() {
   # Only add if not in $PATH already
   [[ ":$PATH:" == *":$1:"* ]] && return 0
-  echo "export PATH=\"$1:$PATH\"" >> $HOME/.profile &&
+  echo 'if [ -d "'$1'" ]; then PATH="'$1':$PATH"; fi' >> $HOME/.profile &&
+  sleep 1 &&
   source $HOME/.profile
 }
 
@@ -88,15 +89,12 @@ apt-install() {
 # $2: package name
 apt-install-ppa() {
   # Install software-properties-common to get add-apt-repository
-  sudo apt install -y software-properties-common &&
   sudo add-apt-repository -y -u ppa:$1 && 
   sudo apt install -y $2
 }
 
 # $@: Snap packages to install
 snap-install() {
-  # Ensure that the snap binaries are installed
-  sudo apt install -y snap snapd &&
   # Install one by one to prevent fails when in bulk and a snap exists
   packages=("$@") &&
   for snap in "${packages[@]}"; do
@@ -113,3 +111,18 @@ download-install-deb() {
   sudo apt install -y gdebi &&
   wget -O "$DEB_NAME" "$1" && sudo gdebi -n "$DEB_NAME" && rm -f "$DEB_NAME"
 }
+
+# Install/configure packages to be used further in the install
+# process, making sure all script dependecies are met
+LOCK_FILE=/tmp/utils.lock
+if [[ ! -f "$LOCK_FILE" ]]; then
+  becho "Installing utils dependencies"
+  sudo apt install -y \
+    git build-essential gdebi snap snapd \
+    gdebi software-properties-common python3-software-properties &&
+  add-to-path "/snap/bin" &&
+  touch "$LOCK_FILE" &&
+  becho "Utils dependencies installed."
+  sleep 1
+fi
+

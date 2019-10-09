@@ -6,7 +6,7 @@ source ../functions/utils.sh && no-root
 APT=(
   zsh # Extended Bourne shell with a large number of improvements
   tmux # Terminal multiplexer
-  tilix # Advanced GTK3 tiling terminal emulator 
+  terminator # Advanced GTK3 tiling terminal emulator 
   vim # Highly configurable text editor
   git # Fast, scalable, distributed revision control system
   git-gui # A Tcl/Tk based graphical user interface to Git
@@ -16,16 +16,17 @@ apt-install ${APT[@]} &&
 
 SNAP=(
   code # TypeScript IDE from Microsoft
-  android-studio # Official IDE for Google's Android operating system
   notepad-plus-plus # Good old M$ Windows notepad++ packed in a snap
   intellij-idea-community # Java IDE from JetBrains
 ) &&
 snap-install ${SNAP[@]} && 
 
+# Change the default shell to zsh
+sudo chsh -s "/bin/zsh" "$USER" &&
+
 # Install oh-my-zsh: framework for managing zsh configuration
 rm -rf "$HOME/.oh-my-zsh" &&
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended" &&
-export-var "SHELL" "/bin/zsh" &&
 
 # Configure git globally
 gecho "Setting global git configurations" &&

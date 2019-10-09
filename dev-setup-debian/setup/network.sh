@@ -14,23 +14,16 @@ APT=(
 ) &&
 apt-install ${APT[@]} &&
 
-# Mount Google Drive on Linux
-apt-install-ppa "alessandro-strada/ppa" "google-drive-ocamlfuse" &&
-
 # Setup ca-certificates (if any)
 gecho "Setting up ca-certificates" &&
 cd ../ca-certificates &&
 for cert in $(ls); do
   echo "Adding $cert" &&
-  sudo cp "$cert" "/usr/local/share/ca-certificates/$cert" &&
+  sudo cp "$cert" "/usr/share/ca-certificates/$cert.crt" &&
   sudo dpkg-reconfigure -f noninteractive ca-certificates &&
   sudo update-ca-certificates
 done &&
-cd - &&
+cd -
 
-# Setup one gdrive account mounting it at startup
-# (The authetication screen will be triggered after reboot)
-gecho "Setting up gdrive auto-mount" &&
-GDRIVE_FOLDER="$HOME/gdrive" &&
-mkdir -p "$GDRIVE_FOLDER" &&
-add-to-startup "gdrive" "sh -c \"google-drive-ocamlfuse $GDRIVE_FOLDER\""
+# Configure WiFi and VPN
+### TODO: Ask for vpn user name, pass and configure the conection
