@@ -120,7 +120,11 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   sudo apt install -y \
     git build-essential gdebi snap snapd \
     gdebi software-properties-common python3-software-properties &&
-  add-to-path "/snap/bin" &&
+  sudo systemctl start snapd &&
+  source /etc/profile &&
+  sudo snap install core &&
+  # Enable non-free repositories
+  sudo add-apt-repository non-free &&
   touch "$LOCK_FILE" &&
   becho "Utils dependencies installed."
   sleep 1

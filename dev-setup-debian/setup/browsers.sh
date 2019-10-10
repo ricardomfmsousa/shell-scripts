@@ -3,12 +3,8 @@
 
 source ../functions/utils.sh && no-root
 
-APT=(
-  firefox # Mozilla Foundation open-source web browser
-) &&
-apt-install ${APT[@]} &&
-
 SNAP=(
+  chromium # Open-source version of Google Chrome
   opera # Opera Software web browser
 ) &&
 snap-install ${SNAP[@]} &&

@@ -4,8 +4,6 @@
 source ../functions/utils.sh && no-root
 
 APT=(
-  # Package managers, PPAs
-  snap snapd gdebi software-properties-common
   # Codecs
   libavcodec-extra ffmpeg
   # Build essentials 
@@ -24,7 +22,7 @@ APT=(
   # Video
   kazam cheese vlc
   # Fonts
-  ttf-mscorefonts-installer fonts-powerline fonts-liberation
+  fonts-powerline fonts-liberation
   # Download manager / Torrent client
   curl wget transmission
   # Archive Extractors

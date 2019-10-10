@@ -38,4 +38,4 @@ cd -
 gecho "Setup success!"
 
 # Reboot
-# becho "Press enter to REBOOT, Ctrl+C to cancel."; read -p ""
+becho "Press enter to REBOOT, Ctrl+C to cancel."; read -p ""

@@ -3,16 +3,11 @@
 
 source ../functions/utils.sh && no-root
 
-APT=(
-  mongodb # Cross-platform document-oriented database program
-  mongodb-clients # Client apps for mongodb
-) &&
-apt-install ${APT[@]} &&
-
 SNAP=(
+  mongo32 # NoSQL document based database
   robo3t-snap # Lightweight GUI for MongoDB
 ) &&
-snap-install ${SNAP[@]} &&
+snap-install ${SNAP[@]}
 
-# MongoDB is configured to start automatically with the server, disable it
-sudo systemctl disable mongodb &&
+# Disable Wayland server for robo3t to work
+sudo sed -i '/WaylandEnable=false/s/^#//g' /etc/gdm3/daemon.conf
