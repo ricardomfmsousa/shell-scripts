@@ -37,11 +37,11 @@ apt-install ${PKGS[@]}
 
 PKGS=(
   # API tester
-  postman 
-  # Graphics
-  pick-colour-picker 
+  com.getpostman.Postman 
+  # Color picker
+  nl.hjdskes.gcolor3
   # Comunications
-  skype
+  com.skype.Client
 )
 flatpack-install ${PKGS[@]}
 
