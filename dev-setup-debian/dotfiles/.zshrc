@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/sousa/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -57,6 +57,12 @@ ZSH_THEME="agnoster"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Fix for slow tab completion
+# https://superuser.com/questions/458906/zsh-tab-completion-of-git-commands-is-very-slow-how-can-i-turn-it-off
+__git_files () {
+  _wanted files expl 'local files' _files
+}
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -87,35 +93,32 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Default editor
+export EDITOR='vim'
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export EDITOR='vim'
-
-# Fix for tilix
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-    source /etc/profile.d/vte.sh
-fi
+alias hosts="sudo $EDITOR /etc/hosts"
+alias zshrc="$EDITOR ~/.zshrc"
+alias dev="cd  ~/Development && l"
+alias chrome-unsecure='google-chrome --disable-web-security \
+  --ignore-certificate-errors --user-data-dir="/tmp" http://localhost:4200'
 
 # Auto-completion for docker
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
-# added by travis gem
-[ -f /home/sousa/.travis/travis.sh ] && source /home/sousa/.travis/travis.sh
+# Load node version manager
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && \
+  printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 
-###-tns-completion-start-###
-if [ -f /home/sousa/.tnsrc ]; then 
-    source /home/sousa/.tnsrc 
-fi
-###-tns-completion-end-###
+# Process /etc/profile file with bash emulation, which
+# sources /etc/profile.d/* and sets the proper PATHs, etc.
+emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
 
-# Set java version: http://www.jenv.be/ 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+# Display system info
+neofetch
+
