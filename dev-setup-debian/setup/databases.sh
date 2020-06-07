@@ -1,27 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Setup all databases and its GUIs
 
-source ../functions/utils.sh && no-root
+source ./functions/utils.sh && no-root
 
-APT=(
-  mongodb # Cross-platform document-oriented database program
-  mongodb-clients # Client apps for mongodb
-) &&
-apt-install ${APT[@]} &&
+# Install DBeaver lastest - handle relational databases
+download-install-deb 'https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb'
 
-SNAP=(
-  robo3t-snap # Lightweight GUI for MongoDB
-) &&
-snap-install ${SNAP[@]} &&
+# Install MongoDB Compass - Official GUI for MongoDB
+download-install-deb 'https://downloads.mongodb.com/compass/mongodb-compass_1.20.5_amd64.deb'
 
-# MongoDB is configured to start automatically with the server, disable it
-sudo systemctl disable mongodb &&
-
-# Install NoSQLBooster: shell-centric cross-platform GUI tool for MongoDB
-INSTALL_DIR="$HOME/.appimage" &&
-APP_NAME="nosqlbooster4mongo-5.1.8.AppImage" &&
-mkdir -p $INSTALL_DIR &&
-wget https://nosqlbooster.com/s3/download/releasesv5/$APP_NAME -P $INSTALL_DIR &&
-sudo chmod +x $INSTALL_DIR/$APP_NAME &&
-# Run the app just enough to index it
-$INSTALL_DIR/$APP_NAME & sleep 5 && kill -9 $!
+# Install mongodb from the official repo
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - 
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | \
+  sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+sudo apt update
+apt-install mongodb-org
+# TODO: ask if it should autostart mongodb service
+# sudo systemctl enable mongodb.service
