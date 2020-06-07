@@ -96,7 +96,7 @@ apt-wait() {
 apt-install() {
   packages=("$@")
   apt-wait &&
-  sudo apt install -y "${packages[@]}" &&
+  sudo apt install -y "${packages[@]}" --install-recommends &&
   apt-wait
 }
 
