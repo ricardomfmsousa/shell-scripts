@@ -1,35 +1,28 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Install miscellaneous utilities
 
-source ../functions/utils.sh && no-root
+source ./functions/utils.sh && no-root
 
-# System monitor and optimizer
-apt-install-ppa "oguzhaninan/stacer" "stacer" &&
-#  Papirus icon theme
-apt-install-ppa "papirus/papirus" "papirus-icon-theme" &&
-
-APT=(
-  # Package managers, PPAs
-  snap snapd gdebi software-properties-common
-  # Runtimes, codecs, fonts and plugins that are restricted in some countries 
-  ubuntu-restricted-extras ubuntu-restricted-addons
+PKGS=(
   # Codecs
-  libavcodec-extra ffmpeg libdvd-pkg
+  libavcodec-extra ffmpeg
   # Build essentials 
   build-essential libssl-dev libstdc++6
   # System info, monitor and power management
   neofetch htop tlp tlp-rdw
   # Partition tools
-  gparted usb-creator-gtk
+  gparted
   # FTP client
   filezilla
   # Office
   libreoffice
   # Graphics
-  flameshot gimp gimp-data gimp-plugin-registry 
-  gimp-data-extras inkscape imagemagick
+  krita gimp gimp-data gimp-plugin-registry 
+  gimp-data-extras inkscape imagemagick flameshot
+  # Audio | Music
+  audacity spotify-client 
   # Video
-  kazam cheese vlc browser-plugin-vlc
+  kazam cheese vlc
   # Fonts
   fonts-powerline fonts-liberation
   # Download manager / Torrent client
@@ -37,19 +30,23 @@ APT=(
   # Archive Extractors
   unace unrar zip unzip p7zip-full p7zip-rar sharutils
   rar uudeview mpack arj cabextract file-roller
-  # Mouse themes
-  breeze-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra
-) && 
-apt-install ${APT[@]} &&
+  # Comunications
+  discord 
+) 
+apt-install ${PKGS[@]}
 
-SNAP=(
+PKGS=(
   # API tester
   postman 
   # Graphics
-  krita pick-colour-picker 
-  # Audio
-  audacity spotify 
+  pick-colour-picker 
   # Comunications
-  discord skype
-) &&
-snap-install ${SNAP[@]}
+  skype
+)
+flatpack-install ${PKGS[@]}
+
+# Download a powerline mono spaced font version
+sudo wget --content-disposition -N -P /usr/share/fonts/ \
+http://github.com/abertsch/Menlo-for-Powerline/blob/master/Menlo%20for%20Powerline.ttf?raw=true
+sudo fc-cache -vf /usr/share/fonts/
+
