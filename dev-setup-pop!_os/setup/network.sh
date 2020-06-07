@@ -31,5 +31,26 @@ for cert in $(ls); do
 done
 cd -
 
+gecho "Applying fix for StrongSwan VPN not updating DNS servers in systemd distros"
+# https://blog.javinator9889.com/strongswan-dns-servers/
+sudo echo "\
+[main]
+plugins=ifupdown,keyfile
+dns=default
+
+[ifupdown]
+managed=false
+
+[device]
+wifi.scan-rand-mac-address=no" | sudo tee /etc/NetworkManager/NetworkManager.conf
+echo "Stopping systemd-resolved service"
+sudo systemctl stop systemd-resolved
+echo "Disabling systemd-resolved - now NetworkManager manages the connections"
+sudo systemctl disable systemd-resolved
+echo "Removing old resolv.conf"
+sudo rm -f /etc/resolv.conf
+echo "Updating resolv.conf with latest changes"
+sudo systemctl restart NetworkManager
+
 # Configure VPN
 ### TODO: Ask for vpn user name, pass and configure the connection
