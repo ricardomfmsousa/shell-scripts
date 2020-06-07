@@ -1,36 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Setup network and install certificates
 
-source ../functions/utils.sh && no-root
+source ./functions/utils.sh && no-root
 
-# Install ca-certificates, VPN IKEv2
+# Install ca-certificates, VPN IKEv2, etc
 gecho "Installing network tools"
-APT=(
-  ca-certificates
-  strongswan 
-  network-manager-strongswan
-  libcharon-extra-plugins
-  libstrongswan-extra-plugins
-) &&
-apt-install ${APT[@]} &&
 
-# Mount Google Drive on Linux
-apt-install-ppa "alessandro-strada/ppa" "google-drive-ocamlfuse" &&
+PKGS=(
+  inetutils-traceroute # displays the route taken by IP packets
+  inetutils-telnet # interactive communication with another host
+  ca-certificates # common CA certificates
+  strongswan # IPsec VPN solution metapackage
+  network-manager-strongswan # strongSwan plugin for network manager
+  libcharon-extra-plugins # strongSwan charon library
+  libstrongswan-extra-plugins # strongSwan utility and crypto library
+  remmina # GTK+ remote desktop client
+  whois # client for the whois directory service
+  nmap # network exploration tool and security / port scanner
+)
+apt-install ${PKGS[@]}
 
 # Setup ca-certificates (if any)
-gecho "Setting up ca-certificates" &&
-cd ../ca-certificates &&
+gecho "Setting up ca-certificates"
+cd ca-certificates
 for cert in $(ls); do
-  echo "Adding $cert" &&
-  sudo cp "$cert" "/usr/local/share/ca-certificates/$cert" &&
-  sudo dpkg-reconfigure -f noninteractive ca-certificates &&
+  echo "Adding $cert"
+  sudo cp "$cert" "/usr/share/ca-certificates/$cert"
+  sudo dpkg-reconfigure -f noninteractive ca-certificates
   sudo update-ca-certificates
-done &&
-cd - &&
+done
+cd -
 
-# Setup one gdrive account mounting it at startup
-# (The authetication screen will be triggered after reboot)
-gecho "Setting up gdrive auto-mount" &&
-GDRIVE_FOLDER="$HOME/gdrive" &&
-mkdir -p "$GDRIVE_FOLDER" &&
-add-to-startup "gdrive" "sh -c \"google-drive-ocamlfuse $GDRIVE_FOLDER\""
+# Configure VPN
+### TODO: Ask for vpn user name, pass and configure the connection
