@@ -16,11 +16,12 @@ PKGS=(
 apt-install ${PKGS[@]}
 
 # Add Docker’s official GPG key
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # Add the official docker repo
-sudo add-apt-repository -y \
-  "deb [arch=amd64] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable"
+sudo add-apt-repository \
+  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) \
+  stable"
 sudo apt update
 gecho "Installing docker-ce"
 sudo apt install -y docker-ce
