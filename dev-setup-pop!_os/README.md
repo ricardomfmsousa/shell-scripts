@@ -1,4 +1,5 @@
-# Configure a Debian machine for web development
+# Configure a Pop!_OS machine for web development
+> [https://pop.system76.com/](https://pop.system76.com/)
 
 To install, open a terminal and run as a regular user **(not root)**:
 
