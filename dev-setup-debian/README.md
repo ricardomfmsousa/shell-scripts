@@ -1,6 +1,6 @@
-# Configure a debian based machine for web development
+# Configure a Debian machine for web development
 
-To install, run as a regular user **(not root)**:
+To install, open a terminal and run as a regular user **(not root)**:
 
 ```bash
 $ ./setup.sh
@@ -8,17 +8,17 @@ $ ./setup.sh
 
 > - Running `setup.sh` will execute all scripts under the `setup` folder;
 > - Every script under the `setup` folder can be run individually;
-> - Tested in Ubuntu 18.04 and Elementary 5.
+> - Tested in Pop!_OS 20.04 LTS.
 
 # Folder description
 
 ## `ca-certificates`
 
-Copy all your certificates to this folder in order to install them system-wide.
+Certificates to be installed system-wide.
 
 ## `dotfiles`
 
-Includes all dotfiles that will be copied to `$HOME`.
+Dotfiles that will be copied to `$HOME`.
 
 ## `functions`
 
