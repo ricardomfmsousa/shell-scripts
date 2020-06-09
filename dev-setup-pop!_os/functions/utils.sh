@@ -95,17 +95,18 @@ apt-wait() {
 # $@: Packages to install
 apt-install() {
   packages=("$@")
-  apt-wait &&
-  sudo apt install -y "${packages[@]}" --install-recommends &&
+  apt-wait
+  sudo apt install -y "${packages[@]}" --install-recommends
   apt-wait
 }
 
 # $1: PPA name
 # $2: package name
 apt-install-ppa() {
-  # Install software-properties-common to get add-apt-repository
-  sudo add-apt-repository -y -u ppa:$1 && 
-  sudo apt install -y $2
+  apt-wait
+  sudo add-apt-repository -y -u $1
+  sudo apt update
+  apt-install $2
 }
 
 # $@: Snap packages to install
@@ -156,4 +157,3 @@ if [[ ! -f "$LOCK_FILE" ]]; then
   becho "Utils dependencies installed."
   sleep 1
 fi
-

@@ -4,10 +4,11 @@
 source ./functions/utils.sh && no-root
 
 gecho "Installing default JRE/JDK and JDK 8"
-# Add the AdoptOpenJDK APT repository for OpenJDK 8
+# Install OpenJDK 8 from AdoptOpenJDK APT repository
 wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
-sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-sudo apt update
+apt-install-ppa \
+  https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
+  adoptopenjdk-8-hotspot
 
 PKGS=(
   apt-transport-https # Transitional package for https support
@@ -19,7 +20,6 @@ PKGS=(
   maven # Build automation tool used primarily for Java projects
   default-jre # Default Java Runtime
   default-jdk # Default Java Dev Kit
-  adoptopenjdk-8-hotspot # OpenJDK 8
 )
 apt-install ${PKGS[@]}
 
@@ -28,5 +28,4 @@ yes 1 | sudo update-alternatives --config java || true
 
 echo "Default Java version set to:"
 java -version
-
 
