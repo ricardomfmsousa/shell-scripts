@@ -8,7 +8,6 @@ gecho "Updating gnome configs"
 # Install tweaks and extensions
 apt-install \
   gnome-tweaks gir1.2-gtop-2.0 \
-  gnome-shell-extension-weather \
   gnome-shell-extension-system-monitor
 
 # Apply custom gnome settings
