@@ -31,4 +31,10 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "'flameshot gui'"
 ##
 
+# Add dock favourites
+gsettings set org.gnome.shell favorite-apps \
+  "['google-chrome.desktop', 'firefox.desktop', 'opera.desktop', 'discord.desktop', 'org.gnome.Geary.desktop', 'code.desktop', 'mongodb-compass.desktop', \
+  'com.getpostman.Postman.desktop', 'dockstation.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'io.elementary.appcenter.desktop']"
+
+
 becho "Done"
