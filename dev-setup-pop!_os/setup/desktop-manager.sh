@@ -19,8 +19,9 @@ gsettings set org.gnome.desktop.interface clock-format '24h'
 gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
 # Add custom keybindings
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-  "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[ \
+  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', \
+  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/]"
 # F1: trigger tilix in quake mode
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Tilix'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'F1'"
@@ -29,12 +30,17 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ name "'Flameshot'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "'<Super>Print'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "'flameshot gui'"
-##
 
 # Add dock favourites
 gsettings set org.gnome.shell favorite-apps \
   "['google-chrome.desktop', 'firefox.desktop', 'opera.desktop', 'discord.desktop', 'org.gnome.Geary.desktop', 'code.desktop', 'mongodb-compass.desktop', \
   'com.getpostman.Postman.desktop', 'dockstation.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'io.elementary.appcenter.desktop']"
 
+# Set gdm profile picture
+sudo cp ../misc/profile.png /var/lib/AccountsService/icons/`whoami`
+
+# Set desktop background picture
+PIC_PATH=/usr/share/backgrounds/pop/nasa-53884.jpg
+gsettings set org.gnome.desktop.background picture-uri "file://$PIC_PATH"
 
 becho "Done"
