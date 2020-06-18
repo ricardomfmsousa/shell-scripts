@@ -16,11 +16,13 @@ nvm install --lts
 # Install mandatory node packages
 gecho "Installing node packages"
 PKGS=(
-  yarn # Fast, reliable, and secure dependency management.
+  yarn # Fast, reliable, and secure dependency management
   @angular/cli # A command line interface for Angular
   create-react-app # Create React apps with no build configuration
   typescript # Superset of JavaScript that compiles to clean JavaScript output
+  ts-node # TypeScript execution and REPL for node.js, with source map support
 )
 # Install globally, silently, quietly, accept defaults, anwser no all questions
 yes n | npm i -g -s -q -y ${PKGS[@]} || true
 
+ 
