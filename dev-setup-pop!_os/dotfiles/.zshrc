@@ -104,7 +104,7 @@ alias hosts="sudo $EDITOR /etc/hosts"
 alias zshrc="$EDITOR ~/.zshrc"
 alias dev="cd  ~/Development && l"
 alias chrome-unsecure='google-chrome --disable-web-security \
-  --ignore-certificate-errors --user-data-dir="/tmp" http://localhost:4200'
+  --ignore-certificate-errors --disable-gpu --user-data-dir=/tmp/chrome-temp'
 
 # Auto-completion for docker
 fpath=(~/.zsh/completion $fpath)
