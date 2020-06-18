@@ -38,7 +38,7 @@ gsettings set org.gnome.shell favorite-apps \
   'com.getpostman.Postman.desktop', 'dockstation.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'io.elementary.appcenter.desktop']"
 
 # Set gdm profile picture
-sudo cp ../misc/profile.png /var/lib/AccountsService/icons/`whoami`
+sudo cp misc/profile.png /var/lib/AccountsService/icons/`whoami`
 
 # Set desktop background picture
 PIC_PATH=/usr/share/backgrounds/pop/nasa-53884.jpg
