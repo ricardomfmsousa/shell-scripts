@@ -21,7 +21,8 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 # Add custom keybindings
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[ \
   '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', \
-  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/]"
+  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/' \
+]"
 # F1: trigger tilix in quake mode
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Tilix'"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'F1'"
