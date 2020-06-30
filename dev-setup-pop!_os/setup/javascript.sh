@@ -10,8 +10,9 @@ gecho "Installing nvm $LATEST_RELEASE"
 sh -c "$(curl -sL https://raw.githubusercontent.com/creationix/nvm/$LATEST_RELEASE/install.sh)"
 source ~/.profile
 
-# Install latest Node.js LTS
-nvm install --lts
+# Install latest Node.js LTS and set it as default
+nvm install 'lts/*'
+nvm alias default 'lts/*'
 
 # Install mandatory node packages
 gecho "Installing node packages"
