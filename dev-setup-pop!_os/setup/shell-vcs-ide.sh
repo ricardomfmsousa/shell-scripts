@@ -3,6 +3,11 @@
 
 source ./functions/utils.sh && no-root
 
+# Install JetBrains Toolbox: manage all available Jet Brains software
+VERSION="jetbrains-toolbox-1.17.7018"
+cd /tmp; wget -cO - "https://download.jetbrains.com/toolbox/$VERSION.tar.gz" | tar -zxvf -
+./$VERSION/jetbrains-toolbox; cd -
+
 PKGS=(
   zsh # Extended Bourne shell with a large number of improvements
   tmux # Terminal multiplexer
@@ -17,8 +22,6 @@ apt-install ${PKGS[@]}
 
 PKGS=(
   com.github.lainsce.notejot # A stupidly-simple sticky notes application
-  com.jetbrains.IntelliJ-IDEA-Community # Java IDE from JetBrains
-  com.jetbrains.IntelliJ-IDEA-Ultimate # Java IDE from JetBrains
 )
 flatpack-install ${PKGS[@]}
 
@@ -38,3 +41,4 @@ read -e -p "Enter your git userame: " -i "$(whoami)" NAME
 read -e -p "Enter your git email: " EMAIL
 git config --global user.name "$NAME"
 git config --global user.email "$EMAIL"
+git config --global push.followTags true
