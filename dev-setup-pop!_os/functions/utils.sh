@@ -1,25 +1,7 @@
 #!/usr/bin/env bash
 # Utility functions to be used in `setup.sh`
 
-# Exit immediately if a command exits with a non-zero status.
-# Treat unset variables as an error when substituting.
-# Set the return value of a pipeline to the status of last command to exit with a non-zero status.
-set -euo pipefail
-# Print the errored script error code, name and line
-trap 'rc=$?; recho "Error code $rc in $0 at line $LINENO"; exit $rc' ERR
-# Disable some (text) dialogs and use default values where possible
-DEBIAN_FRONTEND=noninteractive
-
-APP_IMAGE_FOLDER="$HOME/.local/bin"
-
-recho() { echo -e "\e[1m\e[31m$1\e[0m"; }
-gecho() { echo -e "\e[1m\e[32m$1\e[0m"; }
-becho() { echo -e "\e[1m\e[34m$1\e[0m"; }
-
-no-root() {
-  [ "$EUID" -eq 0 ] && echo "Please don't run $0 as root..." && exit 1
-  return 0
-}
+source ./functions/base-utils.sh && no-root
 
 # $1: repo name
 git-read-latest-release() {
@@ -148,7 +130,7 @@ download-install-deb() {
 LOCK_FILE=/tmp/utils.lock
 if [[ ! -f "$LOCK_FILE" ]]; then
   becho "Installing utils dependencies"
-  sudo apt update && sudo apt upgrade -y && 
+  sudo apt update && sudo apt upgrade -y --allow-downgrades && 
   apt-install \
     wget python3-pip git dirmngr build-essential gdebi snap snapd \
     gdebi software-properties-common python3-software-properties
