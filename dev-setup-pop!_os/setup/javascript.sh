@@ -19,6 +19,7 @@ gecho "Installing node packages"
 PKGS=(
   yarn # Fast, reliable, and secure dependency management
   @angular/cli # A command line interface for Angular
+  @vue/cli # Standard Tooling for Vue.js Development
   create-react-app # Create React apps with no build configuration
   typescript # Superset of JavaScript that compiles to clean JavaScript output
   ts-node # TypeScript execution and REPL for node.js, with source map support
@@ -26,4 +27,5 @@ PKGS=(
 # Install globally, silently, quietly, accept defaults, anwser no all questions
 yes n | npm i -g -s -q -y ${PKGS[@]} || true
 
- 
+# Set yarn as Angular default package manager
+ng config -g cli.packageManager yarn
