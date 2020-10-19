@@ -11,7 +11,7 @@ PKGS=(
   # System info, monitor and power management
   neofetch htop tlp tlp-rdw
   # Partition tools
-  gparted
+  gparted exfat-utils exfat-fuse
   # FTP client
   filezilla
   # Office
@@ -19,8 +19,8 @@ PKGS=(
   # Graphics
   krita gimp gimp-data gimp-plugin-registry 
   gimp-data-extras inkscape imagemagick flameshot
-  # Audio | Music
-  audacity spotify-client 
+  # Audio
+  audacity
   # Video
   kazam cheese vlc
   # Fonts
