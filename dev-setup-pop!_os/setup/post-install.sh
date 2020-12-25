@@ -41,6 +41,6 @@ sudo systemctl restart NetworkManager
 
 # Clean dependencies
 gecho "Removing unneeded dependencies"
-sudo apt autoremove
+sudo apt autoremove -y
 
 # TODO: create swap file, enable it and configure swapiness
