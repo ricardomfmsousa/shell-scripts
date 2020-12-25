@@ -43,6 +43,7 @@ SETUP_FILES=(
 # Run the setup scripts
 for setup in ${SETUP_FILES[@]}; do 
   becho "Running $setup"
+  chmod +x "$SETUP_DIR/$setup"
   # Warn and exit immediately if child script errors 
   "$SETUP_DIR/$setup"
   [ $? -ne 0 ] && recho "Error in $setup" && exit $?
