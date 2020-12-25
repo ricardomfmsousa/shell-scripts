@@ -94,8 +94,11 @@ source $ZSH/oh-my-zsh.sh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Default editor
 export EDITOR='vim'
-# Java Runtime Environment
-export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+# JRE/JDK
+export JRE_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:bin/javac::")
+# GLOBAL PATH
+export PATH="$PATH:$JAVA_HOME/bin"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
