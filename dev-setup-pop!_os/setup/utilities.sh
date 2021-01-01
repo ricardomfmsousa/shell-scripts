@@ -8,8 +8,8 @@ PKGS=(
   libavcodec-extra ffmpeg
   # Build essentials 
   build-essential libssl-dev libstdc++6
-  # System info, monitor and power management
-  neofetch htop tlp tlp-rdw
+  # System info, monitor
+  neofetch htop
   # Partition tools
   gparted exfat-utils exfat-fuse
   # FTP client
